@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<!-- Informuje przeglądarkę, że dokument używa HTML5. -->
+
+<html lang="pl">
+<!-- Początek dokumentu. Język strony to polski. -->
+
+<head>
+    <!-- Informacje o stronie i ustawienia jej wyglądu. -->
+
+    <meta charset="UTF-8">
+    <!-- Pozwala poprawnie wyświetlać polskie litery. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dopasowuje wyświetlanie strony do szerokości ekranu. -->
+
+    <title>Planer nauki</title>
+    <!-- Tytuł widoczny na karcie przeglądarki. -->
+
+    <style>
+        /* Początek CSS, czyli kodu określającego wygląd strony. */
+
+        * {
+            /* Gwiazdka wybiera wszystkie elementy strony. */
+
+            box-sizing: border-box;
+            /* Szerokość elementu obejmuje jego padding i obramowanie. */
+        }
+
+        body {
+            /* Ustawienia całej widocznej strony. */
+
+            margin: 0;
+            /* Usuwa domyślny margines przy brzegach okna. */
+
+            background: #eef2f7;
+            /* Ustawia jasny kolor tła. */
+
+            color: #203047;
+            /* Ustawia ciemny kolor tekstu. */
+
+            font-family: Arial, sans-serif;
+            /* Wybiera Arial lub inną dostępną czcionkę bezszeryfową. */
+
+            line-height: 1.5;
+            /* Ustawia odstęp między liniami tekstu. */
+        }
+
+        header {
+            /* Wygląd górnej części strony z logo i tytułem. */
+
+            padding: 28px 20px;
+            /* Odstęp wewnętrzny: 28 px pionowo i 20 px po bokach. */
+
+            background: white;
+            /* Białe tło nagłówka. */
+
+            border-bottom: 4px solid #174b87;
+            /* Niebieska linia pod nagłówkiem. */
+
+            text-align: center;
+            /* Wyśrodkowanie tekstu. */
+        }
+
+        .logo {
+            /* Kropka oznacza klasę. Te ustawienia dotyczą klasy logo. */
+
+            display: block;
+            /* Obrazek zajmuje osobny blok. */
+
+            width: 220px;
+            /* Docelowa szerokość logo. */
+
+            max-width: 100%;
+            /* Logo nie będzie szersze od swojego kontenera. */
+
+            height: auto;
+            /* Wysokość dopasowuje się z zachowaniem proporcji. */
+
+            margin: 0 auto 20px;
+            /* Wyśrodkowanie obrazka i 20 px odstępu pod nim. */
+        }
+
+        h1 {
+            /* Wygląd głównego tytułu. */
+
+            margin: 0 0 8px;
+            /* Usuwa marginesy oprócz 8 px pod tytułem. */
+
+            color: #174b87;
+            /* Niebieski kolor tytułu. */
+
+            font-size: 32px;
+            /* Wielkość liter tytułu. */
+        }
+
+        header p {
+            /* Wybiera akapity znajdujące się wewnątrz header. */
+
+            margin: 0;
+            /* Usuwa ich domyślne marginesy. */
+        }
+
+        main {
+            /* Główna zawartość aplikacji. */
+
+            width: min(1100px, 100%);
+            /* Szerokość maksymalnie 1100 px, ale nie więcej niż kontener. */
+
+            margin: 28px auto;
+            /* Odstęp góra–dół i wyśrodkowanie poziome. */
+
+            padding: 0 18px;
+            /* Wewnętrzne odstępy po bokach. */
+        }
+
+        section {
+            /* Wygląd każdej sekcji aplikacji. */
+
+            margin-bottom: 24px;
+            /* Odstęp pod sekcją. */
+
+            padding: 24px;
+            /* Odstęp między zawartością a krawędzią sekcji. */
+
+            background: white;
+            /* Białe tło sekcji. */
+
+            border: 1px solid #dce3ec;
+            /* Cienkie obramowanie. */
+
+            border-radius: 14px;
+            /* Zaokrąglenie narożników. */
+
+            box-shadow: 0 4px 16px rgba(20, 45, 80, 0.05);
+            /* Delikatny cień pod sekcją. */
+        }
+
+        h2 {
+            /* Wygląd tytułów poszczególnych sekcji. */
+
+            margin-top: 0;
+            /* Usuwa odstęp nad tytułem sekcji. */
+
+            color: #174b87;
+            /* Niebieski kolor. */
+
+            font-size: 23px;
+            /* Wielkość liter. */
+        }
+
+        .pola-formularza {
+            /* Kontener przechowujący pola formularza. */
+
+            display: grid;
+            /* Układa pola w siatkę. */
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            /* Tworzy dwie kolumny o równej szerokości. */
+
+            gap: 18px;
+            /* Odstępy między polami. */
+
+            margin-bottom: 20px;
+            /* Odstęp między polami a przyciskiem. */
+        }
+
+        label {
+            /* Wygląd podpisów pól. */
+
+            display: block;
+            /* Podpis znajduje się w osobnym wierszu. */
+
+            margin-bottom: 7px;
+            /* Odstęp między podpisem a polem. */
+
+            font-weight: bold;
+            /* Pogrubienie podpisu. */
+        }
+
+        input,
+        select {
+            /* Wspólny wygląd pól i list wyboru. */
+
+            width: 100%;
+            /* Wypełniają szerokość swojego kontenera. */
+
+            min-height: 44px;
+            /* Minimalna wysokość pola. */
+
+            padding: 10px 12px;
+            /* Odstęp tekstu od krawędzi pola. */
+
+            border: 1px solid #a9b7ca;
+            /* Obramowanie pola. */
+
+            border-radius: 7px;
+            /* Zaokrąglone narożniki. */
+
+            background: white;
+            /* Białe tło. */
+
+            color: #203047;
+            /* Kolor wpisywanego tekstu. */
+
+            font: inherit;
+            /* Korzystają z ustawień czcionki elementu nadrzędnego. */
+        }
+
+        input:focus,
+        select:focus {
+            /* Wygląd pola, które jest aktualnie aktywne. */
+
+            outline: 3px solid #b8d5fa;
+            /* Dodaje widoczną obwódkę aktywnego pola. */
+
+            outline-offset: 2px;
+            /* Odsuwa obwódkę od krawędzi pola. */
+        }
+
+        button {
+            /* Wygląd przycisków. */
+
+            padding: 11px 18px;
+            /* Odstęp wewnątrz przycisku. */
+
+            border: 0;
+            /* Usuwa domyślne obramowanie. */
+
+            border-radius: 7px;
+            /* Zaokrągla narożniki. */
+
+            background: #174b87;
+            /* Niebieskie tło przycisku. */
+
+            color: white;
+            /* Biały tekst. */
+
+            font: inherit;
+            /* Dziedziczy czcionkę. */
+
+            font-weight: bold;
+            /* Pogrubia napis. */
+
+            cursor: pointer;
+            /* Po najechaniu pokazuje kursor w kształcie dłoni. */
+        }
+
+        button:hover {
+            /* Wygląd przycisku po najechaniu myszką. */
+
+            background: #103762;
+            /* Przyciemnia tło przycisku. */
+        }
+
+        button:focus-visible {
+            /* Wyróżnienie przycisku, np. przy poruszaniu się klawiszem Tab. */
+
+            outline: 3px solid #4088dc;
+            /* Widoczna obwódka. */
+
+            outline-offset: 3px;
+            /* Odstęp obwódki od przycisku. */
+        }
+
+        .pole-daty {
+            /* Kontener pola daty odniesienia. */
+
+            max-width: 300px;
+            /* Ogranicza jego szerokość. */
+        }
+
+        #suma-minut {
+            /* Znak # wybiera element o konkretnym id. */
+
+            padding: 14px 18px;
+            /* Odstępy wewnątrz podsumowania. */
+
+            border-radius: 8px;
+            /* Zaokrąglone narożniki. */
+
+            background: #eaf2fc;
+            /* Jasnoniebieskie tło. */
+
+            color: #174b87;
+            /* Niebieski tekst. */
+
+            font-size: 19px;
+            /* Wielkość tekstu podsumowania. */
+
+            font-weight: bold;
+            /* Pogrubienie podsumowania. */
+        }
+
+        .tabela-kontener {
+            /* Kontener otaczający tabelę. */
+
+            overflow-x: auto;
+            /* Pozwala przewijać szeroką tabelę poziomo. */
+        }
+
+        table {
+            /* Ustawienia tabeli. */
+
+            width: 100%;
+            /* Tabela wypełnia szerokość kontenera. */
+
+            border-collapse: collapse;
+            /* Łączy sąsiadujące obramowania komórek. */
+        }
+
+        th,
+        td {
+            /* Ustawienia komórek nagłówka i danych. */
+
+            padding: 12px;
+            /* Odstęp wewnątrz komórek. */
+
+            border-bottom: 1px solid #dce3ec;
+            /* Linia pod komórkami. */
+
+            text-align: left;
+            /* Wyrównuje zawartość do lewej. */
+
+            vertical-align: middle;
+            /* Wyrównuje zawartość pionowo do środka. */
+        }
+
+        th {
+            /* Wygląd komórek nagłówka tabeli. */
+
+            background: #f1f5fa;
+            /* Jasne tło nagłówka. */
+
+            font-size: 14px;
+            /* Wielkość napisów w nagłówku tabeli. */
+        }
+
+        td input {
+            /* Ustawienia pól umieszczonych w komórkach tabeli. */
+
+            min-width: 85px;
+            /* Zapewnia minimalną szerokość pola. */
+        }
+
+        td button {
+            /* Wygląd przycisków umieszczonych w tabeli. */
+
+            margin: 3px;
+            /* Odstęp wokół przycisku. */
+
+            padding: 8px 12px;
+            /* Odstęp wewnątrz przycisku. */
+
+            font-size: 14px;
+            /* Mniejszy tekst niż w głównym przycisku. */
+        }
+
+        #lista-ukonczonych {
+            /* Lista ukończonych zadań. */
+
+            padding-left: 22px;
+            /* Miejsce na znaczniki listy. */
+        }
+
+        #lista-ukonczonych li {
+            /* Pojedynczy element listy ukończonych zadań. */
+
+            margin-bottom: 10px;
+            /* Odstęp między zadaniami. */
+        }
+
+        footer {
+            /* Stopka na dole strony. */
+
+            padding: 12px 20px 28px;
+            /* Odstępy wewnątrz stopki. */
+
+            color: #526174;
+            /* Kolor tekstu stopki. */
+
+            text-align: center;
+            /* Wyśrodkowanie tekstu. */
+
+            font-size: 14px;
+            /* Wielkość tekstu. */
+        }
+
+        @media (max-width: 650px) {
+            /* Poniższe ustawienia działają na ekranach do 650 px. */
+
+            .pola-formularza {
+                grid-template-columns: 1fr;
+                /* Układa pola w jednej kolumnie zamiast dwóch. */
+            }
+
+            section {
+                padding: 18px;
+                /* Zmniejsza odstępy wewnątrz sekcji. */
+            }
+
+            h1 {
+                font-size: 27px;
+                /* Zmniejsza tytuł na małym ekranie. */
+            }
+        }
+    </style>
+    <!-- Koniec ustawień wyglądu. -->
+
+</head>
+<!-- Koniec informacji o dokumencie. -->
+
+<body>
+    <!-- Początek widocznej zawartości strony. -->
+
+    <header>
+        <!-- Górna część strony. -->
+
+        <img
+            src="logo.png"
+            alt="Logo Uniwersytetu w Białymstoku"
+            class="logo"
+        >
+        <!--
+            img wyświetla obrazek.
+            src wskazuje plik logo.png.
+            alt opisuje obrazek, np. dla czytnika ekranu.
+            class przypisuje ustawienia CSS o nazwie logo.
+        -->
+
+        <h1>Planer nauki</h1>
+        <!-- Główny tytuł strony. -->
+
+        <p>Zaplanuj zadania i kontroluj czas przygotowań do sesji.</p>
+        <!-- Krótki opis aplikacji. -->
+
+    </header>
+    <!-- Koniec górnej części strony. -->
+
+    <main>
+        <!-- Główna zawartość aplikacji. -->
+
+        <section>
+            <!-- Sekcja dodawania zadania. -->
+
+            <h2>Dodaj zadanie</h2>
+            <!-- Tytuł sekcji. -->
+
+            <form id="formularz-zadania">
+                <!-- Formularz. JavaScript odnajduje go przez id. -->
+
+                <div class="pola-formularza">
+                    <!-- Kontener układający pola w kolumnach. -->
+
+                    <div>
+                        <!-- Grupa zawierająca podpis i pole nazwy. -->
+
+                        <label for="nazwa">Nazwa zadania</label>
+                        <!-- for łączy podpis z polem o id nazwa. -->
+
+                        <input
+                            type="text"
+                            id="nazwa"
+                            name="nazwa"
+                            placeholder="Np. Powtórka z matematyki"
+                            required
+                        >
+                        <!--
+                            type="text" pozwala wpisywać tekst.
+                            id identyfikuje pole.
+                            name określa nazwę pola w formularzu.
+                            placeholder to podpowiedź w pustym polu.
+                            required oznacza, że pole trzeba wypełnić.
+                        -->
+
+                    </div>
+                    <!-- Koniec grupy pola nazwy. -->
+
+                    <div>
+                        <!-- Grupa pola terminu. -->
+
+                        <label for="termin">Termin wykonania</label>
+                        <!-- Podpis pola terminu. -->
+
+                        <input
+                            type="date"
+                            id="termin"
+                            name="termin"
+                            required
+                        >
+                        <!--
+                            type="date" tworzy pole wyboru daty.
+                            id i name mają wartość termin.
+                            required wymaga podania daty.
+                        -->
+
+                    </div>
+                    <!-- Koniec grupy pola terminu. -->
+
+                    <div>
+                        <!-- Grupa wyboru priorytetu. -->
+
+                        <label for="priorytet">Priorytet</label>
+                        <!-- Podpis listy priorytetów. -->
+
+                        <select id="priorytet" name="priorytet">
+                            <!-- Początek rozwijanej listy. -->
+
+                            <option value="1">1 — wysoki</option>
+                            <!-- Wybór tej opcji przekazuje wartość 1. -->
+
+                            <option value="2" selected>2 — średni</option>
+                            <!-- Wartość 2. selected wybiera ją domyślnie. -->
+
+                            <option value="3">3 — niski</option>
+                            <!-- Wybór tej opcji przekazuje wartość 3. -->
+
+                        </select>
+                        <!-- Koniec listy priorytetów. -->
+
+                    </div>
+                    <!-- Koniec grupy priorytetu. -->
+
+                    <div>
+                        <!-- Grupa planowanego czasu nauki. -->
+
+                        <label for="planowane-minuty">
+                            Planowany czas nauki w minutach
+                        </label>
+                        <!-- Podpis pola liczbowego. -->
+
+                        <input
+                            type="number"
+                            id="planowane-minuty"
+                            name="planowane-minuty"
+                            min="1"
+                            step="1"
+                            value="30"
+                            required
+                        >
+                        <!--
+                            type="number" tworzy pole liczbowe.
+                            id i name identyfikują planowany czas.
+                            min="1" ustawia minimalną dozwoloną wartość.
+                            step="1" określa krok wartości na 1.
+                            value="30" ustawia początkową wartość 30.
+                            required wymaga wypełnienia pola.
+                        -->
+
+                    </div>
+                    <!-- Koniec grupy czasu nauki. -->
+
+                </div>
+                <!-- Koniec kontenera wszystkich pól. -->
+
+                <button type="submit">Dodaj zadanie</button>
+                <!--
+                    Przycisk wysyła formularz.
+                    JavaScript powinien obsłużyć to zdarzenie
+                    i dodać zadanie do listy.
+                -->
+
+            </form>
+            <!-- Koniec formularza. -->
+
+        </section>
+        <!-- Koniec sekcji dodawania zadania. -->
+
+        <section>
+            <!-- Sekcja daty odniesienia. -->
+
+            <h2>Data odniesienia</h2>
+            <!-- Tytuł sekcji. -->
+
+            <div class="pole-daty">
+                <!-- Kontener ograniczający szerokość pola daty. -->
+
+                <label for="data-odniesienia">Wybierz datę</label>
+                <!-- Podpis pola daty odniesienia. -->
+
+                <input
+                    type="date"
+                    id="data-odniesienia"
+                >
+                <!--
+                    Pole wyboru daty.
+                    JavaScript odnajduje je przez id data-odniesienia.
+                -->
+
+            </div>
+            <!-- Koniec kontenera daty. -->
+
+        </section>
+        <!-- Koniec sekcji daty odniesienia. -->
+
+        <section>
+            <!-- Sekcja aktywnych zadań. -->
+
+            <h2>Lista zadań</h2>
+            <!-- Tytuł sekcji. -->
+
+            <p id="suma-minut" role="status">
+                Łącznie zostało: 0 min
+            </p>
+            <!--
+                JavaScript aktualizuje tutaj sumę pozostałych minut.
+                role="status" pozwala technologiom wspomagającym
+                ogłaszać zmiany tej informacji.
+            -->
+
+            <div class="tabela-kontener">
+                <!-- Umożliwia przewijanie tabeli na małym ekranie. -->
+
+                <table>
+                    <!-- Początek tabeli z zadaniami. -->
+
+                    <thead>
+                        <!-- Część z nagłówkami kolumn. -->
+
+                        <tr>
+                            <!-- Początek wiersza nagłówków. -->
+
+                            <th scope="col">Zadanie</th>
+                            <!-- Nagłówek kolumny z nazwą zadania. -->
+
+                            <th scope="col">Termin</th>
+                            <!-- Nagłówek kolumny z terminem. -->
+
+                            <th scope="col">Priorytet</th>
+                            <!-- Nagłówek kolumny z priorytetem. -->
+
+                            <th scope="col">Planowane minuty</th>
+                            <!-- Nagłówek kolumny planowanego czasu. -->
+
+                            <th scope="col">Wykonane minuty</th>
+                            <!-- Nagłówek kolumny wykonanego czasu. -->
+
+                            <th scope="col">Pozostałe minuty</th>
+                            <!-- Nagłówek kolumny czasu do wykonania. -->
+
+                            <th scope="col">Akcje</th>
+                            <!-- Nagłówek kolumny przycisków zadania. -->
+
+                        </tr>
+                        <!-- Koniec wiersza nagłówków. -->
+
+                    </thead>
+                    <!-- Koniec nagłówka tabeli. -->
+
+                    <tbody id="lista-zadan"></tbody>
+                    <!-- JavaScript dodaje tutaj wiersze z zadaniami. -->
+
+                </table>
+                <!-- Koniec tabeli. -->
+
+            </div>
+            <!-- Koniec przewijanego kontenera tabeli. -->
+
+        </section>
+        <!-- Koniec sekcji aktywnych zadań. -->
+
+        <section>
+            <!-- Sekcja ukończonych zadań. -->
+
+            <h2>Ukończone zadania</h2>
+            <!-- Tytuł sekcji. -->
+
+            <ul id="lista-ukonczonych"></ul>
+            <!--
+                Początkowo pusta lista.
+                JavaScript może dodawać tu ukończone zadania.
+            -->
+
+        </section>
+        <!-- Koniec sekcji ukończonych zadań. -->
+
+    </main>
+    <!-- Koniec głównej zawartości. -->
+
+    <footer>
+        <!-- Początek stopki. -->
+
+        Emilija Baranovska · ASD1-M2-08 · Projekt studencki
+        <!-- Informacja o autorce i kodzie projektu. -->
+
+    </footer>
+    <!-- Koniec stopki. -->
+
+    <script src="script.js"></script>
+    <!--
+        Wczytuje kod JavaScript z pliku script.js.
+        Umieszczenie na końcu body pozwala najpierw
+        utworzyć pola i inne elementy strony.
+    -->
+
+</body>
+<!-- Koniec widocznej zawartości. -->
+
+</html>
+<!-- Koniec dokumentu HTML. -->
